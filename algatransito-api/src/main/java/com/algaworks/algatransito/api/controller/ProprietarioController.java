@@ -2,16 +2,13 @@ package com.algaworks.algatransito.api.controller;
 
 import com.algaworks.algatransito.domain.model.Proprietario;
 import com.algaworks.algatransito.domain.repository.ProprietarioRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
+
 import java.util.List;
 
 @AllArgsConstructor
@@ -20,12 +17,11 @@ import java.util.List;
 public class ProprietarioController {
 
 
-    private ProprietarioRepository proprietarioRepository;
+    private final ProprietarioRepository proprietarioRepository;
 
     @GetMapping
     public List<Proprietario> listar() {
 
-        // return proprietarioRepository.findByNomeContaining("João");
         return proprietarioRepository.findAll();
 
     }
@@ -48,7 +44,7 @@ public class ProprietarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Proprietario adicionar(@RequestBody Proprietario proprietario) {
+    public Proprietario adicionar(@Valid @RequestBody Proprietario proprietario) {
         return proprietarioRepository.save(proprietario);
     }
 
