@@ -68,9 +68,4 @@ public class VeiculoController {
         return ResponseEntity.noContent().build();
     }
 
-    @ExceptionHandler(NegocioException.class)
-    public ResponseEntity<String> capturar(NegocioException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
 }
