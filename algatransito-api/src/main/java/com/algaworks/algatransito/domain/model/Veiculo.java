@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Getter
@@ -40,9 +41,11 @@ public class Veiculo {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Enumerated(EnumType.STRING)
     private StatusVeiculo status;
+
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private LocalDateTime dataCadastro;
+    private OffsetDateTime dataCadastro;
+
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private LocalDateTime dataApreensao;
+    private OffsetDateTime dataApreensao;
 
 }
