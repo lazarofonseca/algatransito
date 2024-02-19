@@ -19,6 +19,11 @@ public class RegistroVeiculoService {
 
     private final VeiculoRepository veiculoRepository;
     private final ProprietarioRepository proprietarioRepository;
+    
+    
+    
+    
+    
 
     @Transactional
     public Veiculo salvar(Veiculo veiculo) {
@@ -47,5 +52,10 @@ public class RegistroVeiculoService {
     @Transactional
     public void excluir(Long veiculoId) {
         veiculoRepository.deleteById(veiculoId);
+    }
+
+    public Veiculo buscar(Long veiculoId) {
+        return veiculoRepository.findById(veiculoId)
+                .orElseThrow(() -> new NegocioException("Veiculo não encontrado"));
     }
 }
