@@ -29,6 +29,7 @@ public class ProprietarioController {
 
     }
 
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/{proprietarioId}")
     public ResponseEntity<Proprietario> buscar(@PathVariable Long proprietarioId) {
         return proprietarioRepository.findById(proprietarioId)
